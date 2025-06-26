@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Arrivals | Elite Motors - Premium Car Dealership</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #ff9f1c;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .new-arrivals-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1616422285623-13ff0162193c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            min-height: 400px;
+        }
+        
+        .new-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: var(--accent);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            z-index: 2;
+            animation: pulse 2s infinite;
+        }
+        
+        .car-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .car-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .exclusive-badge {
+            background: linear-gradient(45deg, #ff9f1c, #ff4d1c);
+            color: white;
+            font-weight: bold;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+        
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 159, 28, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .countdown {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: var(--accent);
+        }
+        
+        .filter-button {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .filter-button.active {
+            border-bottom-color: var(--accent);
+            color: var(--accent);
+        }
+        
+        /* Featured Banner */
+        .featured-banner {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .featured-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,159,28,0.1) 0%, rgba(255,159,28,0) 70%);
+            transform: rotate(30deg);
+            animation: shine 8s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: rotate(30deg) translate(-20%, -20%); }
+            50% { transform: rotate(30deg) translate(20%, 20%); }
+            100% { transform: rotate(30deg) translate(-20%, -20%); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .new-arrivals-header {
+                height: 40vh;
+            }
+            
+            .car-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-car text-3xl text-orange-500 mr-2"></i>
+                        <span class="text-xl font-bold text-gray-900">Elite Motors</span>
+                    </div>
+                    <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                        <a href="index.html" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Home</a>
+                        <a href="inventory.html" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Inventory</a>
+                        <a href="new-arrivals.html" class="text-orange-500 border-b-2 border-orange-500 inline-flex items-center px-1 pt-1 text-sm font-medium">New Arrivals</a>
+                        <a href="about.html" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">About Us</a>
+                        <a href="financing.html" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Financing</a>
+                        <a href="contact.html" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center">
+                    <button class="bg-orange-500 text-white px-4 py-2 rounded-md font-medium hover:bg-orange-600 transition duration-300">
+                        Schedule Test Drive
+                    </button>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
+                <a href="index.html" class="block px-3 py-2 text-base font-medium text-gray-900">Home</a>
+                <a href="inventory.html" class="block px-3 py-2 text-base font-medium text-gray-900">Inventory</a>
+                <a href="new-arrivals.html" class="block px-3 py-2 text-base font-medium text-orange-500">New Arrivals</a>
+                <a href="about.html" class="block px-3 py-2 text-base font-medium text-gray-900">About Us</a>
+                <a href="financing.html" class="block px-3 py-2 text-base font-medium text-gray-900">Financing</a>
+                <a href="contact.html" class="block px-3 py-2 text-base font-medium text-gray-900">Contact</a>
+                <button class="block w-full text-left px-3 py-2 text-base font-medium text-orange-500">
+                    Schedule Test Drive
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="new-arrivals-header text-white flex items-center">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Fresh Off the Truck</h1>
+            <p class="text-xl md:text-2xl max-w-2xl mx-auto">Be the first to explore our latest luxury arrivals</p>
+        </div>
+    </section>
+
+    <!-- Featured Arrival Banner -->
+    <section class="featured-banner py-8 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-6 md:mb-0">
+                    <span class="exclusive-badge inline-block mb-4">LIMITED AVAILABILITY</span>
+                    <h2 class="text-3xl font-bold mb-4">2024 Ferrari SF90 Stradale</h2>
+                    <p class="text-gray-300 mb-4">The first Ferrari production PHEV with 1000 hybrid HP V8 engine. Only 3 units available in the US.</p>
+                    <div class="flex items-center mb-4">
+                        <div class="mr-4">
+                            <span class="block text-2xl font-bold">2.5<span class="text-sm">sec</span></span>
+                            <span class="text-xs text-gray-300">0-60 MPH</span>
+                        </div>
+                        <div class="mr-4">
+                            <span class="block text-2xl font-bold">211<span class="text-sm">mph</span></span>
+                            <span class="text-xs text-gray-300">Top Speed</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl font-bold">986<span class="text-sm">HP</span></span>
+                            <span class="text-xs text-gray-300">Total Power</span>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <span class="text-sm font-medium mb-1 block">Time until next shipment:</span>
+                        <div class="countdown text-xl">25d 14h 32m 18s</div>
+                    </div>
+                    <button class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-md font-medium transition duration-300">
+                        <i class="fas fa-lock mr-2"></i> Reserve Allocation
+                    </button>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1620362190626-1dbadb7c89e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Ferrari SF90 Stradale" class="rounded-lg transform -rotate-3 hover:rotate-0 transition-transform duration-500 w-full max-w-md">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="py-8 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <button class="filter-button px-4 py-2 font-medium active">All New Arrivals</button>
+                <button class="filter-button px-4 py-2 font-medium">Just Landed</button>
+                <button class="filter-button px-4 py-2 font-medium">Limited Editions</button>
+                <button class="filter-button px-4 py-2 font-medium">Coming Soon</button>
+                <button class="filter-button px-4 py-2 font-medium">Electric</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals Grid -->
+    <section class="py-8 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">Latest Additions to Our Collection</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Car 1 -->
+                <div class="car-card bg-white rounded-lg overflow-hidden">
+                    <div class="relative">
+                        <span class="new-tag">Just Arrived</span>
+                        <img src="https://images.unsplash.com/photo-1584345604476-8ec256e4fe86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Lamborghini Huracán STO" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900">Lamborghini Huracán STO</h3>
+                                <p class="text-gray-600">2024 • 640 HP • Coupe</p>
+                            </div>
+                            <span class="text-orange-500 font-bold">$332,000</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 mb-4">
+                            <div class="text-center">
+                                <div class="feature-icon mx-auto mb-1">
+                                    <i class="fas fa-tachometer-alt text-xs text-orange-500"></i>
+                                </div>
+                                <p class="text-xs text-gray-600">2.9s 0-60</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="feature-icon mx-auto mb-1">
+                                    <i class="fas fa-road text-xs text-orange-500"></i>
+                                </div>
+                                <p class="text-xs text-gray-600">193 mph</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="feature-icon mx-auto mb-1">
+                                    <i class="fas fa-weight text-xs text-orange-500"></i>
+                                </div>
+                                <p class="text-xs text-gray-600">2,950 lbs</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center mt-4">
+                            <button class="text-orange-500 hover:text-orange-700 text-sm font-medium flex items-center">
+                                <i class="fas fa-eye mr-1"></i> Details
+                            </button>
+                            <button class="bg-gray-800 hover:bg-black text-white px-4 py-1 rounded-md text-sm font-medium transition duration-300">
+                                <i class="fas fa-car mr-1"></i> Reserve
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Car 2 -->
+                <div class="car-card bg-white rounded-lg overflow-hidden">
+                    <div class="relative">
+                        <span class="new-tag">Just Arrived</span>
+                        <span class="exclusive-badge">US Spec</span>
+                        <img src="https://images.unsplash.com/photo-1631950816868-a9ae8a1ed1f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Mercedes-AMG GT Black Series" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900">Mercedes-AMG GT Black Series</h3>
+                                <p class="text-gray-600">2024 • 720 HP • Coupe</p>
+                            </div>
+                            <span class="text-orange-500 font-bold">$364,000</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 mb-4">
+                            <div class="text-center">
+                                <div class="feature-icon mx-auto mb-1">
+                                    <i class="fas fa-tachometer-alt text-xs text-orange-500"></i>
+                                </div>
+                                <p class="text-xs text-gray-600">3.1s 0-60</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="feature-icon mx-auto mb-1">
+                                    <i class="fas fa-road text-xs text-orange-500"></i>
+                                </div>
+                                <p class="text-xs text-gray-600">202 mph</p>
+                            </div>
+                            <div class="text-center">

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Motors | Premium Car Dealership</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #ff9f1c;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1494972308805-463bc619d34e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            min-height: 600px;
+        }
+        
+        .car-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .car-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-form input, 
+        .contact-form textarea,
+        .search-form input,
+        .search-form select {
+            border: 1px solid #ddd;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form input:focus, 
+        .contact-form textarea:focus,
+        .search-form input:focus,
+        .search-form select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(255, 159, 28, 0.3);
+        }
+        
+        .btn-primary {
+            background-color: var(--accent);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #e68a00;
+            transform: translateY(-2px);
+        }
+        
+        .nav-item::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        .nav-item:hover::after {
+            width: 100%;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .carousel-item {
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .animated {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero {
+                height: 70vh;
+            }
+            
+            .car-details {
+                flex-direction: column;
+            }
+            
+            .car-image {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-car text-3xl text-orange-500 mr-2"></i>
+                        <span class="text-xl font-bold text-gray-900">Elite Motors</span>
+                    </div>
+                    <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                        <a href="index.html" class="nav-item text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Home</a>
+                        <div class="dropdown relative">
+                            <button class="nav-item text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">
+                                Inventory <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="dropdown-menu mt-2 py-1 rounded-md">
+                                <a href="newarrivals.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">New Arrivals</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Luxury Cars</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">SUVs</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sports Cars</a>
+                            </div>
+                        </div>
+                        <a href="about.html" class="nav-item text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">About Us</a>
+                        <a href="financing.html" class="nav-item text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Financing</a>
+                        <a href="contact.html" class="nav-item text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center">
+                    <button class="bg-orange-500 text-white px-4 py-2 rounded-md font-medium hover:bg-orange-600 transition duration-300">
+                        Schedule Test Drive
+                    </button>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
+                <a href="index.html" class="block px-3 py-2 text-base font-medium text-gray-900">Home</a>
+                <a href="inventory.html" class="block px-3 py-2 text-base font-medium text-gray-900">Inventory</a>
+                <a href="about.html" class="block px-3 py-2 text-base font-medium text-gray-900">About Us</a>
+                <a href="financing.html" class="block px-3 py-2 text-base font-medium text-gray-900">Financing</a>
+                <a href="contact.html" class="block px-3 py-2 text-base font-medium text-gray-900">Contact</a>
+                <button class="block w-full text-left px-3 py-2 text-base font-medium text-orange-500">
+                    Schedule Test Drive
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero text-white flex items-center justify-center text-center">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 animated">Premium Automotive Excellence</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Discover the perfect vehicle to match your lifestyle from our curated collection of luxury automobiles.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-md font-medium transition duration-300">
+                    <i class="fas fa-car mr-2"></i> Browse Inventory
+                </button>
+                <button class="bg-transparent hover:bg-white hover:text-gray-900 border-2 border-white text-white px-6 py-3 rounded-md font-medium transition duration-300">
+                    <i class="fas fa-phone-alt mr-2"></i> Contact Us
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Cars Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Featured Luxury Vehicles</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our carefully selected collection of premium automobiles offers unparalleled performance, comfort, and style.</p>
+            </div>
+            
+            <!-- Search and Filter -->
+            <div class="bg-gray-50 p-6 rounded-lg mb-12 search-form">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div>
+                        <label for="make" class="block text-sm font-medium text-gray-700 mb-1">Make</label>
+                        <select id="make" class="w-full px-4 py-2 rounded-md border-gray-300 bg-white">
+                            <option value="">All Makes</option>
+                            <option value="Audi">Audi</option>
+                            <option value="BMW">BMW</option>
+                            <option value="Mercedes">Mercedes</option>
+                            <option value="Porsche">Porsche</option>
+                            <option value="Range Rover">Range Rover</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="model" class="block text-sm font-medium text-gray-700 mb-1">Model</label>
+                        <input type="text" id="model" placeholder="Any model" class="w-full px-4 py-2 rounded-md border-gray-300">
+                    </div>
+                    <div>
+                        <label for="price" class="block text-sm font-medium text-gray-700 mb-1">Price Range</label>
+                        <select id="price" class="w-full px-4 py-2 rounded-md border-gray-300 bg-white">
+                            <option value="">Any Price</option>
+                            <option value="1">$50,000 - $100,000</option>
+                            <option value="2">$100,000 - $150,000</option>
+                            <option value="3">$150,000+</option>
+                        </select>
+                    </div>
+                    <div class="flex items-end">
+                        <button id="search-btn" class="w-full bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md font-medium transition duration-300">
+                            <i class="fas fa-search mr-2"></i> Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cars Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Car 1 -->
+                <div class="car-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Porsche 911 Turbo" class="w-full h-64 object-cover">
+                        <div class="absolute top-2 right-2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                            New Arrival
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Porsche 911 Turbo S</h3>
+                            <span class="text-orange-500 font-bold">$203,500</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Coupe • 640 HP • PDK</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-gray-100 px-2 py-1 rounded">0-60: 2.6s</span>
+                            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Top Speed: 205 mph</span>
+                            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Carbon Ceramic Brakes</span>
+                        </div>
+                        <div class="flex justify-between items-center mt-4">
+                            <button class="text-orange-500 hover:text-orange-700 text-sm font-medium flex items-center">
+                                <i class="fas fa-eye mr-1"></i> View Details
+                            </button>
+                            <button class="bg-gray-800 hover:bg-black text-white px-4 py-1 rounded-md text-sm font-medium transition duration-300">
+                                <i class="fas fa-car mr-1"></i> Test Drive
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Car 2 -->
+                <div class="car-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1555626909-0bae28fdee34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Range Rover SVAutobiography" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Range Rover SVAutobiography</h3>
+                            <span class="text-orange-500 font-bold">$215,000</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">SUV • 557 HP • Auto</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-gray-100 px-2 py-1 rounded">4WD</span>
+                            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Terrain Response</span>
+                            <span class="text-xs bg-gray-100 px-2 py-1 rounded">Executive Seats</span>
+                            <span class="text-xs bg-gray-100 px-2 py-1 rounded">22" Wheels</span>
+                        </div>
+                        <div class="flex justify-between items-center mt-4">
+                            <button class="text-orange-500 hover:text-orange-700 text-sm font-medium flex items-center">
+                                <i class="fas fa-eye mr-1"></i> View Details
+                            </button>
+                            <button class="bg-gray-800 hover:bg-black text-white px-4 py-1 rounded-md text-sm font-medium transition duration-300">
+                                <i class="fas fa-car mr-1"></i> Test Drive
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Car 3 -->
+                <div class="car-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Audi RS6 Avant" class="w-full h

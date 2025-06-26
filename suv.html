@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury SUVs | Elite Motors - Premium Utility Vehicles</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #ff9f1c;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        
+        .suvs-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1492138786289-665db5ab4eb4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            min-height: 500px;
+        }
+        
+        .suv-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .suv-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .offroad-badge {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+        }
+        
+        .luxury-badge {
+            background: linear-gradient(135deg, #d4af37, #f9d423);
+            color: var(--primary);
+        }
+        
+        .hybrid-badge {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+        
+        .button-terrain {
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            color: white;
+        }
+        
+        .button-luxury {
+            background: linear-gradient(135deg, #d4af37, #b8860b);
+            color: white;
+        }
+        
+        .speed-indicator {
+            position: relative;
+            height: 4px;
+            background-color: #e5e7eb;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .speed-fill {
+            position: absolute;
+            height: 100%;
+            background: linear-gradient(90deg, #ff9f1c, #ff4d1c);
+            border-radius: 2px;
+        }
+        
+        .terrain-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        
+        /* Category filter buttons */
+        .category-btn {
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .category-btn.active {
+            border-bottom-color: var(--accent);
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-car text-3xl text-orange-500 mr-2"></i>
+                        <span class="text-xl font-bold text-gray-900">Elite Motors</span>
+                    </div>
+                    <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                        <a href="index.html" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Home</a>
+                        <a href="inventory.html" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Inventory</a>
+                        <a href="suv.html" class="text-orange-500 border-b-2 border-orange-500 inline-flex items-center px-1 pt-1 text-sm font-medium">Luxury SUVs</a>
+                        <a href="about.html" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">About Us</a>
+                        <a href="contact.html" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center">
+                    <button class="bg-orange-500 text-white px-4 py-2 rounded-md font-medium hover:bg-orange-600 transition duration-300">
+                        Schedule Test Drive
+                    </button>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="suvs-header text-white flex items-center">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Premium SUV Collection</h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto">Commanding presence meets uncompromising luxury in our hand-selected utility vehicles</p>
+        </div>
+    </section>
+
+    <!-- Featured SUV Banner -->
+    <section class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <span class="luxury-badge inline-block text-xs font-bold px-3 py-1 rounded-full mb-4">FLAGSHIP MODEL</span>
+                    <h2 class="text-3xl font-bold mb-4">2024 Range Rover SVAutobiography</h2>
+                    <p class="text-gray-300 mb-6">The ultimate expression of Range Rover luxury, with bespoke interior craftsmanship and a refined 557 HP V8 engine. Experience peerless comfort with our Signature Suite rear seats.</p>
+                    <div class="grid grid-cols-3 gap-4 mb-8">
+                        <div class="bg-gray-800 p-3 rounded-lg text-center">
+                            <p class="text-xl font-bold mb-1">4.5s</p>
+                            <p class="text-xs text-gray-300">0-60 MPH</p>
+                        </div>
+                        <div class="bg-gray-800 p-3 rounded-lg text-center">
+                            <p class="text-xl font-bold mb-1">155mph</p>
+                            <p class="text-xs text-gray-300">Top Speed</p>
+                        </div>
+                        <div class="bg-gray-800 p-3 rounded-lg text-center">
+                            <p class="text-xl font-bold mb-1">35.4"</p>
+                            <p class="text-xs text-gray-300">Water Wading</p>
+                        </div>
+                    </div>
+                    <button class="button-luxury px-8 py-3 rounded-md font-medium transition duration-300">
+                        <i class="fas fa-crown mr-2"></i> Configure Yours
+                    </button>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1555626909-0bae28fdee34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Range Rover SVAutobiography" class="rounded-xl w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUV Collection -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap gap-4 mb-8 border-b border-gray-200 pb-4">
+                <button class="category-btn active px-4 py-2 font-medium">All SUVs</button>
+                <button class="category-btn px-4 py-2 font-medium">Luxury</button>
+                <button class="category-btn px-4 py-2 font-medium">Performance</button>
+                <button class="category-btn px-4 py-2 font-medium">Off-Road</button>
+                <button class="category-btn px-4 py-2 font-medium">7-Seaters</button>
+                <button class="category-btn px-4 py-2 font-medium">Electric</button>
+            </div>
+            
+            <!-- SUV Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- SUV 1 -->
+                <div class="suv-card bg-white rounded-xl overflow-hidden">
+                    <div class="relative h-64">
+                        <span class="luxury-badge absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full">LUXURY</span>
+                        <img src="https://images.unsplash.com/photo-1598541850678-286530a42de3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Mercedes-Benz G-Class" class="w-full h-full object-cover">
+                        <div class="absolute bottom-3 right-3 bg-white text-gray-900 text-sm font-bold px-3 py-1 rounded-md">$180,750</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Mercedes-Benz G 550</h3>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-600">2024 • 416 HP • 4WD</span>
+                            <span class="text-sm text-gray-500">35 miles</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 mb-4">
+                            <div class="text-center">
+                                <div class="terrain-icon mb-2">
+                                    <i class="fas fa-mountain text-gray-700"></i>
+                                </div>
+                                <p class="text-xs text-gray-600">3 Locking Diffs</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="terrain-icon mb-2">
+                                    <i class="fas fa-chair text-gray-700"></i>
+                                </div>
+                                <p class="text-xs text-gray-600">Designo Leather</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="terrain-icon mb-2">
+                                    <i class="fas fa-snowflake text-gray-700"></i>
+                                </div>
+                                <p class="text-xs text-gray-600">Cold Weather</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <button class="text-orange-500 hover:text-orange-700 text-sm font-medium flex items-center">
+                                <i class="fas fa-eye mr-1"></i> Details
+                            </button>
+                            <button class="bg-gray-800 hover:bg-black text-white px-4 py-1 rounded-md text-sm font-medium transition duration-300">
+                                <i class="fas fa-car mr-1"></i> Reserve
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SUV 2 -->
+                <div class="suv-card bg-white rounded-xl overflow-hidden">
+                    <div class="relative h-64">
+                        <span class="offroad-badge absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full">OFF-ROAD</span>
+                        <span class="hybrid-badge absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full">HYBRID</span>
+                        <img src="https://images.unsplash.com/photo-1632774789474-1f84570f1b18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" 
+                             alt="Land Rover Defender" class="w-full h-full object-cover">
+                        <div class="absolute bottom-3 right-3 bg-white text-gray-900 text-sm font-bold px-3 py-1 rounded-md">$79,900</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Land Rover Defender P400e</h3>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-600">2024 • 398 HP • PHEV</span>
+                            <span class="text-sm text-gray-500">2,150 miles</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 mb-4">
+                            <div class="text-center">
+                                <div class="terrain-icon mb-2">
+                                    <i class="fas fa-tree text-gray-700"></i>
+                                </div>
+                                <p class="text-xs text-gray-600">Terrain Response</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="terrain-icon mb-2">
+                                    <i class="fas fa-bolt text-gray-700"></i>
+                                </div>
+                                <p class="text-xs text-gray-600">27mi EV Range</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="terrain-icon mb-2">
+                                    <i class="fas fa-water text-gray-700"></i>
+                                </div>
+                                <p class="text-xs text-gray-600">35.4" Wading</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <button class="text-orange-500 hover:text-orange-700 text-sm font-medium flex items-center">
+                                <i class="fas fa-eye mr-1"></i> Details
+                            </button>
+                            <button class="button-terrain px-4 py-1 rounded-md text-sm font-medium transition duration-300">
+                                <i class="fas fa-road mr-1"></i> Test Drive
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SUV 3 -->
+                <div class="suv-card bg-white rounded-xl overflow-hidden">
+                    <div class="relative h-64">
+                        <span class="luxury-badge absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full">PERFORMANCE</span>
+                        <img src="https://images.unsplash.com/photo-1636206443251-0f6cd571782e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="BMW X7 M60i" class="w-full h-full object-cover">
+                        <div class="absolute bottom-3 right-3 bg-white text-gray-900 text-sm font-bold px-3 py-1 rounded-md">$118,100</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">BMW X7 M60i</h3>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-600">2024 • 523 HP • Twin-Turbo</span>
+                            <span class="text-sm text-gray-500">1,250 miles</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 mb-4">
+                            <div class="text-center">
+                                <div class="terrain-icon mb-2">
+                                    <i class="fas fa-tachometer-alt text-gray-700"></i>
+                                </div>
+                                <p class="text-xs text-gray-600">4.5s 0-60

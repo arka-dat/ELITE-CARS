@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financing | Elite Motors - Premium Car Dealership</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #ff9f1c;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .financing-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1616422285623-13ff0162193c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            min-height: 400px;
+        }
+        
+        .financing-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid var(--accent);
+        }
+        
+        .financing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .calculator-container {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .range-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #ddd;
+            outline: none;
+        }
+        
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+        }
+        
+        .range-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+        }
+        
+        .tab-button {
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab-button.active {
+            border-bottom-color: var(--accent);
+            color: var(--accent);
+        }
+        
+        .accordion-item {
+            border-bottom: 1px solid #eee;
+        }
+        
+        .accordion-header {
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-header:hover {
+            color: var(--accent);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .accordion-content.show {
+            max-height: 500px;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25em 0.5em;
+            font-size: 0.75em;
+            font-weight: 600;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25rem;
+        }
+        
+        .badge-primary {
+            background-color: rgba(255, 159, 28, 0.1);
+            color: var(--accent);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .animated {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .financing-header {
+                height: 40vh;
+            }
+            
+            .tabs-container {
+                flex-direction: column;
+            }
+            
+            .tab-button {
+                border-bottom: none;
+                border-left: 3px solid transparent;
+                text-align: left;
+                padding-left: 1rem;
+            }
+            
+            .tab-button.active {
+                border-bottom-color: transparent;
+                border-left-color: var(--accent);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-car text-3xl text-orange-500 mr-2"></i>
+                        <span class="text-xl font-bold text-gray-900">Elite Motors</span>
+                    </div>
+                    <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                        <a href="index.html" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Home</a>
+                        <a href="inventory.html" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Inventory</a>
+                        <a href="about.html" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">About Us</a>
+                        <a href="financing.html" class="text-orange-500 border-b-2 border-orange-500 inline-flex items-center px-1 pt-1 text-sm font-medium">Financing</a>
+                        <a href="contact.html" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center">
+                    <button class="bg-orange-500 text-white px-4 py-2 rounded-md font-medium hover:bg-orange-600 transition duration-300">
+                        Schedule Test Drive
+                    </button>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
+                <a href="index.html" class="block px-3 py-2 text-base font-medium text-gray-900">Home</a>
+                <a href="inventory.html" class="block px-3 py-2 text-base font-medium text-gray-900">Inventory</a>
+                <a href="about.html" class="block px-3 py-2 text-base font-medium text-gray-900">About Us</a>
+                <a href="financing.html" class="block px-3 py-2 text-base font-medium text-orange-500">Financing</a>
+                <a href="contact.html" class="block px-3 py-2 text-base font-medium text-gray-900">Contact</a>
+                <button class="block w-full text-left px-3 py-2 text-base font-medium text-orange-500">
+                    Schedule Test Drive
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="financing-header text-white flex items-center">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 animated">Flexible Financing Options</h1>
+            <p class="text-xl md:text-2xl max-w-2xl mx-auto">Tailored solutions to make your dream car a reality</p>
+        </div>
+    </section>
+
+    <!-- Financing Tabs -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="tabs-container flex border-b border-gray-200 mb-8">
+                <button class="tab-button active py-4 px-6 font-medium text-gray-700" data-tab="purchase">Purchase Options</button>
+                <button class="tab-button py-4 px-6 font-medium text-gray-700" data-tab="lease">Lease Programs</button>
+                <button class="tab-button py-4 px-6 font-medium text-gray-700" data-tab="calculator">Payment Calculator</button>
+                <button class="tab-button py-4 px-6 font-medium text-gray-700" data-tab="apply">Pre-Approval</button>
+            </div>
+            
+            <!-- Purchase Options Tab -->
+            <div id="purchase-tab" class="tab-content">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <!-- Financing Option 1 -->
+                    <div class="financing-card bg-white p-8 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-orange-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-percentage text-orange-500 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Traditional Financing</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Secure competitive rates through our network of preferred lenders with terms from 24 to 84 months.</p>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                                <span>APR as low as 2.99%*</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                                <span>No prepayment penalties</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                                <span>Flexible down payments</span>
+                            </li>
+                        </ul>
+                        <div class="text-center">
+                            <span class="badge badge-primary mb-2">Popular Choice</span>
+                            <button class="bg-gray-800 hover:bg-black text-white px-6 py-2 rounded-md font-medium transition duration-300 w-full">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Financing Option 2 -->
+                    <div class="financing-card bg-white p-8 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-orange-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-hand-holding-usd text-orange-500 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Balloon Financing</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Lower monthly payments with a larger final "balloon" payment at the end of your term.</p>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                                <span>Reduced monthly payments</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                                <span>Flexible end-of-term options</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                                <span>Ideal for business owners</span>
+                            </li>
+                        </ul>
+                        <div class="text-center">
+                            <button class="bg-gray-800 hover:bg-black text-white px-6 py-2 rounded-md font-medium transition duration-300 w-full">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Financing Option 3 -->
+                    <div class="financing-card bg-white p-8 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-orange-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-exchange-alt text-orange-500 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900">Trade-In Solutions</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Maximize the value of your current vehicle toward the purchase of your next luxury automobile.</p>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                                <span>Competitive appraisal values</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                                <span>Seamless transaction process</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-orange-500 mt-1 mr-2"></i>
+                                <span>Owe more than it's worth? We can help</span>
+                            </li>
+                        </ul>
+                        <div class="text-center">
+                            <button class="bg-gray-800 hover:bg-black text-white px-6 py-2 rounded-md font-medium transition duration-300 w-full">
+                                Get Trade Estimate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h3>
+                    <div class="accordion">
+                        <!-- FAQ 1 -->
+                        <div class="accordion-item mb-4">
+                            <div class="accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h4 class="font-medium text-gray-900">What credit score do I need to qualify for financing?</h4>
+                                <i class="fas fa-chevron-down text-orange-500 transition-transform duration-300"></i>
+                            </div>
+                            <div class="accordion-content px-4">
+                                <p class="text-gray-600 pb-4">We work with a wide range of credit profiles. While preferred rates typically require a score of 700 or higher, we have financing options available for scores as low as 580. Our financial specialists can help find the best solution for your situation.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ 2 -->
+                        <div class="accordion-item mb-4">
+                            <div class="accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h4 class="font-medium text-gray-900">What documents do I need to apply for financing?</h4>
+                                <i class="fas fa-chevron-down text-orange-500 transition-transform duration-300"></i>
+                            </div>
+                            <div class="accordion-content px-4">
+                                <p class="text-gray-600 pb-4">Typically, you'll need:
+                                    <ul class="list-disc pl-5 space-y-2 mt-2">
+                                        <li>Valid driver's license</li>
+                                        <li>Proof of income (recent pay stubs or tax returns)</li>
+                                        <li>Proof of residence (utility bill or lease agreement)</li>
+                                        <li>Insurance information</li>
+                                        <li>References (for certain financing programs)</li>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ 3 -->
+                        <div class="accordion-item mb-4">
+                            <div class="accordion-header flex justify-between items-center p-4 cursor-pointer">
+                                <h4 class="font-medium text-gray-900">How long does the financing approval process take?</h4>
+                                <i class="fas fa-chevron-down text-orange-500 transition-transform duration-300"></i>
+                            </div>
+                            <div class="accordion-content px-4">
+                                <p class="text-gray-600 pb-4">Most applications receive a preliminary decision within 1-2 business hours during normal business hours. Complete funding typically takes 24-48 hours once all documentation is received. We offer expedited processing for qualified clients.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lease Programs Tab -->
+            <div id="lease-tab" class="tab-content hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <!-- Lease Option 1 -->
+                    <div class="financing-card bg-white p-8 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-orange-100 p-3 rounded
